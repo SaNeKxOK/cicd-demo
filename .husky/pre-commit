@@ -1,1 +1,2 @@
+./scripts/validate-package-lock.sh
 npx lint-staged
