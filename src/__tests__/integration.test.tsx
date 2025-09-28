@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 import App from '../App';
 
 // Mock crypto.randomUUID for consistent test IDs
-Object.defineProperty(global, 'crypto', {
+Object.defineProperty(globalThis, 'crypto', {
   value: {
     randomUUID: vi.fn(
       () => 'test-uuid-' + Math.random().toString(36).substr(2, 9)

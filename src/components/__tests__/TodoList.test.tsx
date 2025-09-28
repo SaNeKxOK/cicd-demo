@@ -5,7 +5,7 @@ import TodoList from '../TodoList';
 
 // Mock crypto.randomUUID for consistent test IDs
 let todoIdCounter = 0;
-Object.defineProperty(global, 'crypto', {
+Object.defineProperty(globalThis, 'crypto', {
   value: {
     randomUUID: vi.fn(() => `test-uuid-${++todoIdCounter}`),
   },
