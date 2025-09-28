@@ -45,6 +45,7 @@ const TodoItem = ({ todo, onToggle, onDelete, onEdit }: TodoItemProps) => {
             autoFocus
             aria-label="Edit todo text"
           />
+
           <button
             type="submit"
             className="edit-btn save"
