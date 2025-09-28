@@ -1,11 +1,11 @@
 import { useState, useMemo } from 'react';
 import type { Todo, TodoFilter } from '../types/todo';
 import TodoItem from './TodoItem';
+import TodoInput from './TodoInput';
 import '../styles/TodoList.css';
 
 const TodoList = () => {
   const [todos, setTodos] = useState<Todo[]>([]);
-  const [inputText, setInputText] = useState('');
   const [filter, setFilter] = useState<TodoFilter>('all');
 
   const filteredTodos = useMemo(() => {
@@ -28,18 +28,14 @@ const TodoList = () => {
     [todos]
   );
 
-  const handleAddTodo = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (inputText.trim()) {
-      const newTodo: Todo = {
-        id: crypto.randomUUID(),
-        text: inputText.trim(),
-        completed: false,
-        createdAt: new Date(),
-      };
-      setTodos((prev) => [...prev, newTodo]);
-      setInputText('');
-    }
+  const handleAddTodo = (text: string) => {
+    const newTodo: Todo = {
+      id: crypto.randomUUID(),
+      text,
+      completed: false,
+      createdAt: new Date(),
+    };
+    setTodos((prev) => [...prev, newTodo]);
   };
 
   const handleToggleTodo = (id: string) => {
@@ -70,32 +66,14 @@ const TodoList = () => {
       prev.map((todo) => ({ ...todo, completed: !allCompleted }))
     );
   };
-
+  console.log('filteredTodos', filteredTodos);
   return (
     <div className="todo-container">
       <div className="todo-card">
         <h1 className="todo-title">Todo List</h1>
 
         {/* Add Todo Form */}
-        <form onSubmit={handleAddTodo} className="todo-form">
-          <div className="todo-form-container">
-            <input
-              type="text"
-              value={inputText}
-              onChange={(e) => setInputText(e.target.value)}
-              placeholder="What needs to be done?"
-              className="todo-input"
-              aria-label="Add new todo"
-            />
-            <button
-              type="submit"
-              className="todo-add-btn"
-              aria-label="Add todo"
-            >
-              Add
-            </button>
-          </div>
-        </form>
+        <TodoInput onAddTodo={handleAddTodo} />
 
         {/* Filter Buttons */}
         {todos.length > 0 && (
