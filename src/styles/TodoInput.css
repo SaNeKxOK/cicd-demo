@@ -1,0 +1,61 @@
+/* Todo Input Form Styles */
+.todo-form {
+  margin-bottom: 1.5rem;
+}
+
+.todo-form-container {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.todo-input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  color: #1f2937;
+  outline: none;
+  transition: all 0.2s;
+}
+
+.todo-input:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+  border-color: transparent;
+}
+
+.todo-input::placeholder {
+  color: #6b7280;
+}
+
+.todo-add-btn {
+  padding: 0.75rem 1.5rem;
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.todo-add-btn:hover {
+  background-color: #2563eb;
+}
+
+.todo-add-btn:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Responsive design */
+@media (max-width: 640px) {
+  .todo-form-container {
+    flex-direction: column;
+  }
+
+  .todo-add-btn {
+    margin-top: 0.5rem;
+  }
+}

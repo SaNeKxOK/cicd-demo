@@ -3,17 +3,21 @@ import { describe, it, expect } from 'vitest';
 import App from './App';
 
 describe('App', () => {
-  it('renders Vite + React heading', () => {
+  it('renders todo list application', () => {
     render(<App />);
-    const heading = screen.getByText(/vite \+ react/i);
+    const heading = screen.getByText(/todo list/i);
     expect(heading).toBeInTheDocument();
   });
 
-  it('renders learn more text', () => {
+  it('renders add todo input', () => {
     render(<App />);
-    const learnMore = screen.getByText(
-      /click on the vite and react logos to learn more/i
-    );
-    expect(learnMore).toBeInTheDocument();
+    const input = screen.getByPlaceholderText(/what needs to be done/i);
+    expect(input).toBeInTheDocument();
+  });
+
+  it('renders add button', () => {
+    render(<App />);
+    const addButton = screen.getByRole('button', { name: /add todo/i });
+    expect(addButton).toBeInTheDocument();
   });
 });
